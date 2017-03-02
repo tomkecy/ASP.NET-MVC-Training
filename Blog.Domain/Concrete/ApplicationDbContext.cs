@@ -3,8 +3,12 @@ using Blog.Domain.Entities;
 
 namespace Blog.Domain.Concrete
 {
-    class ApplicationDbContext : DbContext
+    public class ApplicationDbContext : DbContext
     {
+        public ApplicationDbContext() : base("BlogContext")
+        {
+            
+        }
         public virtual DbSet<Post> Posts { get; set; }
         public virtual DbSet<PostComment> PostComments { get; set; }
 
