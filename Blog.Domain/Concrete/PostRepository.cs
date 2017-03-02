@@ -11,7 +11,7 @@ namespace Blog.Domain.Concrete
     /// <summary>
     /// Implementation of IPostRepository
     /// </summary>
-    class PostRepository : IPostRepository
+    public class PostRepository : IPostRepository
     {
         #region PrivateFields
 
@@ -91,6 +91,7 @@ namespace Blog.Domain.Concrete
             if (entity.Id == 0)
             {
                 dbContext.Posts.Add(entity);
+                
             }
             else
             {
