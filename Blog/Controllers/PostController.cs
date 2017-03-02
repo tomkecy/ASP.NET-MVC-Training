@@ -47,10 +47,12 @@ namespace Blog.Controllers
         /// 
         /// </summary>
         /// <returns></returns>
-        public ViewResult Index()
+        public ViewResult List()
         {
             IEnumerable<Post> posts = postRepository.GetAll().OrderBy(x => x.CreationDateTime).Take(numberOfPosts);
             return View(posts);
         }//END of Index method
+        
+
     }//END of public class PostController
 }

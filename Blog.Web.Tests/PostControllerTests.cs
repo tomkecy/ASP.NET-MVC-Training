@@ -32,7 +32,7 @@ namespace Blog.Web.Tests
             postController.NumberOfPosts = 3;
 
             //Act
-            Post[] result = ((IEnumerable<Post>) postController.Index().Model).ToArray();
+            Post[] result = ((IEnumerable<Post>) postController.List().Model).ToArray();
 
             //Assert
 

@@ -12,7 +12,9 @@ namespace Blog.Domain.Entities
     {
         [Key]
         public int Id { get; set; }
-        public String Content { get; set; }
+
+        public string Title { get; set; }
+        public string Content { get; set; }
         public DateTime CreationDateTime { get; set; }
         public IEnumerable<PostComment> Comments { get; set; }
 
