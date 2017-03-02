@@ -25,25 +25,39 @@ namespace Blog.Controllers
         #endregion
 
         /// <summary>
-        /// 
+        /// Returns viewresult with main admin panel
         /// </summary>
-        /// <returns></returns>
+        /// <returns>View with list of all posts</returns>
         public ViewResult Index()
         {
             return View(postRepository.GetAll());
-        }
+        }//END of Index method
 
         /// <summary>
-        /// 
+        /// Returns View with new post creation
         /// </summary>
-        /// <param name="id"></param>
-        /// <returns></returns>
+        /// <returns>View with new post editor</returns>
+        public ViewResult Create()
+        {
+            return View("Edit", new Post());
+        }//END of Create method
+
+        /// <summary>
+        /// Returns existing post editor view
+        /// </summary>
+        /// <param name="id">Post id</param>
+        /// <returns>Edit ViewResult</returns>
         public ViewResult Edit(int id)
         {
             Post post = postRepository.GetById(id);
             return View(post);
         }//END of Edit method
 
+        /// <summary>
+        /// Updates post in underlying repository
+        /// </summary>
+        /// <param name="post">Updated post</param>
+        /// <returns>Edit view</returns>
         [HttpPost]
         public ActionResult Edit(Post post)
         {
@@ -56,6 +70,12 @@ namespace Blog.Controllers
             return View(post);
         }//END of Edit method
 
+        /// <summary>
+        /// Removes post with passed id from underlying repository
+        /// and returns to Index action
+        /// </summary>
+        /// <param name="id">Post id</param>
+        /// <returns>Redirect To Action Index</returns>
         [HttpPost]
         public ActionResult Delete(int id)
         {

@@ -115,6 +115,24 @@ namespace Blog.Web.Tests
             //Assert
             mock.Verify(m => m.Update(It.IsAny<Post>()), Times.Never);
             Assert.IsInstanceOfType(result, typeof(ViewResult));
-        }
+        }//END of CannotSaveInvalidChanges method
+
+        [TestMethod]
+        public void CanDeleteExistingPosts()
+        {
+            //Arrange
+            Mock<IPostRepository> mock = CreateIPostRepositoryMock();
+            AdminController target = new AdminController(mock.Object);
+            Post post = mock.Object.GetById(1);
+
+            //Act
+            target.Delete(post.Id);
+
+            //Assert
+            mock.Verify(m => m.Delete(post.Id));
+
+
+
+        }//END of CanDeleteExistingPosts method
     }//END of class AdminControllerTests
 }

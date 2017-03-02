@@ -18,5 +18,10 @@ namespace Blog.Domain.Entities
         public DateTime CreationDateTime { get; set; }
         public IEnumerable<PostComment> Comments { get; set; }
 
+        public Post()
+        {
+            CreationDateTime = DateTime.Now;
+        }
+
     }//END of class Post
 }
