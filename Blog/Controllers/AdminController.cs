@@ -59,8 +59,14 @@ namespace Blog.Controllers
         [HttpPost]
         public ActionResult Delete(int id)
         {
-            postRepository.Delete(id);
-        }
+            Post post = postRepository.Delete(id);
+            if (post != null)
+            {
+                TempData["message"] = string.Format("Usunięto {0} ", post.Title);
+         
+            }
+            return RedirectToAction("Index");
+        }//END of Delete method
 
     }//END of class AdminController
 }
