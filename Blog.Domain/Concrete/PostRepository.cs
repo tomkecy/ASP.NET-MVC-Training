@@ -39,28 +39,27 @@ namespace Blog.Domain.Concrete
         /// Removes post from the repository
         /// </summary>
         /// <param name="id">Post id</param>
-        public void Delete(int id)
+        /// <returns>Removed post</returns>
+        public Post Delete(int id)
         {
-            Post post = GetById(id);
-            Delete(post);
-            
+            Post dbEntry = dbContext.Posts.Find(id);
+            if (dbEntry != null)
+            {
+                dbContext.PostComments.RemoveRange(dbEntry.Comments);
+                dbContext.Posts.Remove(dbEntry);
+            }
+            dbContext.SaveChanges();
+            return dbEntry;
         }//END of Delete method
 
         /// <summary>
         /// Removes post from the repository
         /// </summary>
         /// <param name="entity">Post to be removed</param>
-        public void Delete(Post entity)
+        /// <returns>Removed post</returns>
+        public Post Delete(Post entity)
         {
-            if (entity != null)
-            {
-                if (dbContext.Posts.Contains(entity))
-                {
-                    dbContext.PostComments.RemoveRange(entity.Comments);
-                    dbContext.Posts.Remove(entity);
-                }
-            }
-            dbContext.SaveChanges();
+            return Delete(entity.Id);
         }//END of Delete method
 
         /// <summary>
