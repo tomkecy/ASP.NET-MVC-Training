@@ -16,8 +16,8 @@ namespace Blog.Domain.Abstract
         T GetById(int id);
         void Add(T entity);
         void Update(T entity);
-        void Delete(T entity);
-        void Delete(int id);
+        T Delete(T entity);
+        T Delete(int id);
 
     }//end of interface IRepository<T>
 }
