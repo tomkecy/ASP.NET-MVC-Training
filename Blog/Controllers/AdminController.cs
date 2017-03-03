@@ -4,10 +4,15 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Blog.Domain.Abstract;
+using Blog.Domain.Concrete;
 using Blog.Domain.Entities;
 
 namespace Blog.Controllers
 {
+    /// <summary>
+    /// Provides methods that respond to HTTP requests 
+    /// linked with admin panel
+    /// </summary>
     public class AdminController : Controller
     {
         #region PrivateFields
@@ -17,7 +22,10 @@ namespace Blog.Controllers
         #endregion
 
         #region Constructors
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="postRepository"></param>
         public AdminController(IPostRepository postRepository)
         {
             this.postRepository = postRepository;

@@ -22,8 +22,6 @@ namespace Blog.Controllers
 
         #endregion
 
-
-
         #region Constructors
 
         public PostController(IPostRepository postRepository)
