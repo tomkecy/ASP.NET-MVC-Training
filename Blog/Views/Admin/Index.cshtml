@@ -1,6 +1,42 @@
 ﻿@model IEnumerable<Blog.Domain.Entities.Post>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Administracja";
 }
 
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3>Panel administracji - zarządzaj postami</h3> 
+    </div>
+    <div class="panel-body">
+        <table class="table table-stripped table-bordered table-condensed">
+            <tr>
+                <th>Id</th>
+                <th>Tytuł</th>
+                <th>Data dodania</th>
+                <th>Liczba komentarzy</th>
+                <th>Akcje</th>
+            </tr>
+            @foreach (var post in Model)
+            {
+                <tr>
+                    <td>@post.Id</td>
+                    <td>@post.Title</td>
+                    <td>@post.CreationDateTime</td>
+                    <td>@post.Comments.Count()</td>
+                    <td>
+                        @Html.ActionLink("Edytuj", "Edit", new {post.Id}, new {@class = "btn btn-default"})
+                        @using (Html.BeginForm("Delete", "Admin"))
+                        {
+                            @Html.Hidden("Id", post.Id)
+                            <input class="btn btn-danger" type="submit" value="Usuń"/>
+                        }
+                    </td>
+                </tr>
+            }
+        </table>
+    </div>
+    <div class="panel-footer">
+        @Html.ActionLink("Dodaj", "Create", "Admin", null, new {@class = "btn btn-primary"})
+    </div>
+</div> 

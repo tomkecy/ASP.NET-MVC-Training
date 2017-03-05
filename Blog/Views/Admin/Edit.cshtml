@@ -3,23 +3,25 @@
 }
 @model Blog.Domain.Entities.Post
 
-<h2>Edit</h2>
+<h2>Kreator posta</h2>
+<hr/>
 
 @using (Html.BeginForm("Edit", "Admin"))
 {
     <div class="form-horizontal">
         <div class="form-group">
-            @Html.EditorFor(m => m.Title)
-            @Html.LabelFor(m => m.Title)
+            @Html.LabelFor(m => m.Title)<br />  
+            @Html.TextBoxFor(m => m.Title, new {@class = "form-control"})     
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.Content)<br/>
+            @Html.TextAreaFor(m => m.Content, new {@class ="form-control", rows=5})
+
         </div>
         
         <div class="form-group">
-            @Html.TextAreaFor(m => m.Content)
-            @Html.LabelFor(m => m.Content)
-        </div>
-        
-        <div class="form-group">
-            <input type="submit" value="Dodaj" class="btn btn-default"/>
+            <input type="submit" value="Dodaj" class="btn btn-primary"/>
+            @Html.ActionLink("Powrót", "Index", "Admin", null, new {@class="btn btn-warning"})
         </div>
 
     </div>

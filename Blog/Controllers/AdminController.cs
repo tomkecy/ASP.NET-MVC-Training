@@ -4,7 +4,6 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Blog.Domain.Abstract;
-using Blog.Domain.Concrete;
 using Blog.Domain.Entities;
 
 namespace Blog.Controllers
@@ -20,12 +19,11 @@ namespace Blog.Controllers
         private IPostRepository postRepository;
 
         #endregion
-
         #region Constructors
         /// <summary>
-        /// 
+        /// Initializes new instance of AdminController
         /// </summary>
-        /// <param name="postRepository"></param>
+        /// <param name="postRepository">Post repository to be manipulated by controller</param>
         public AdminController(IPostRepository postRepository)
         {
             this.postRepository = postRepository;
@@ -80,7 +78,7 @@ namespace Blog.Controllers
 
         /// <summary>
         /// Removes post with passed id from underlying repository
-        /// and returns to Index action
+        /// and returns to Index action. If operation was successful adds message to TempData
         /// </summary>
         /// <param name="id">Post id</param>
         /// <returns>Redirect To Action Index</returns>
