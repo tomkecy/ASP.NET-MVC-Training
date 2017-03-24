@@ -1,5 +1,6 @@
 ﻿@{
-    ViewBag.Title = "Edit";
+    ViewBag.Title = "Edycja";
+    Layout = "~/views/shared/_Admin_Layout.cshtml";
 }
 @model Blog.Domain.Entities.Post
 
@@ -12,6 +13,10 @@
         <div class="form-group">
             @Html.LabelFor(m => m.Title)<br />  
             @Html.TextBoxFor(m => m.Title, new {@class = "form-control"})     
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.Category)
+            @Html.TextBoxFor(m => m.Category)
         </div>
         <div class="form-group">
             @Html.LabelFor(m => m.Content)<br/>

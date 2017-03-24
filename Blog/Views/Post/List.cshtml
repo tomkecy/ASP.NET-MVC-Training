@@ -1,9 +1,9 @@
-﻿@model IEnumerable<Blog.Domain.Entities.Post>
+﻿@using SportsStore.WebUI.HtmlHelpers
+@model Blog.Models.PostsListViewModel
 @{
     ViewBag.Title = "Blog";
 }
-<div>
-    @foreach (var post in Model)
+    @foreach (var post in Model.Posts)
     {
 
         <div class="well" style="margin-top: 2%">
@@ -13,4 +13,6 @@
             @Html.ActionLink("Skomentuj", "Details","Post",  new { post.Id}, new {@class="btn btn-default"} )
         </div>
     }
-</div>
+    <div class="btn-group pull-right">
+        @Html.PageLinks(Model.PagingInfo, m => Url.Action("List", "Post", new {page = m}))
+    </div>

@@ -6,6 +6,7 @@ using System.Web.Mvc;
 using System.Web.UI.WebControls;
 using Blog.Domain.Abstract;
 using Blog.Domain.Entities;
+using Blog.Models;
 using Ninject.Infrastructure.Language;
 
 namespace Blog.Controllers
@@ -47,8 +48,19 @@ namespace Blog.Controllers
         /// <returns>View with posts list</returns>
         public ViewResult List(int page=1)
         {
-            IEnumerable<Post> posts = _postRepository.GetAll().OrderByDescending(x => x.CreationDateTime).Skip((page-1)*_postsPerPage).Take(_postsPerPage);
-            return View(posts);
+            IEnumerable<Post> allPosts = _postRepository.GetAll().OrderByDescending(x => x.CreationDateTime);
+            PostsListViewModel postsListViewModel = new PostsListViewModel()
+            {
+                Posts = allPosts.Skip((page - 1) * _postsPerPage).Take(_postsPerPage).ToList(),
+                PagingInfo = new PagingInfo()
+                {
+                    CurrentPage = page,
+                    PostsPerPage = _postsPerPage,
+                    TotalPosts = allPosts.Count()
+                }
+                
+            };
+            return View(postsListViewModel);
         }//END of Index method
 
         public ViewResult Details(int id)
