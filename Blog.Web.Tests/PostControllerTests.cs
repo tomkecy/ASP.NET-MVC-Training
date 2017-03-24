@@ -29,7 +29,7 @@ namespace Blog.Web.Tests
             }).AsQueryable());
 
             PostController postController = new PostController(mock.Object);
-            postController.NumberOfPosts = 3;
+            postController.PostsPerPage = 3;
 
             //Act
             Post[] result = ((IEnumerable<Post>) postController.List().Model).ToArray();

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -45,7 +46,7 @@ namespace Blog.Domain.Concrete
             Post dbEntry = dbContext.Posts.Find(id);
             if (dbEntry != null)
             {
-                dbContext.PostComments.RemoveRange(dbEntry.Comments);
+                dbContext.PostComments.RemoveRange(dbEntry.PostComments);
                 dbContext.Posts.Remove(dbEntry);
             }
             dbContext.SaveChanges();
@@ -78,7 +79,7 @@ namespace Blog.Domain.Concrete
         /// <returns>Returns post with passed id</returns>
         public Post GetById(int id)
         {
-            return dbContext.Posts.SingleOrDefault(post => post.Id == id);
+            return dbContext.Posts.Include(m => m.PostComments).SingleOrDefault(post => post.Id == id);
         }//END of GetById method
 
         /// <summary>
@@ -90,16 +91,21 @@ namespace Blog.Domain.Concrete
             if (entity.Id == 0)
             {
                 dbContext.Posts.Add(entity);
-                
             }
             else
             {
-                Post post = dbContext.Posts.Find(entity.Id);
-                if (post != null)
+                dbContext.Posts.Attach(entity);
+                var dbEntry = dbContext.Entry(entity);
+                dbEntry.State = EntityState.Modified;
+                if (entity.PostComments != null)
                 {
-                    post.Content = entity.Content;
-                    post.CreationDateTime = entity.CreationDateTime;
-                    post.Comments = entity.Comments;
+                    foreach (var postComment in entity.PostComments)
+                    {
+                        dbContext.PostComments.Attach(postComment);
+                        var entry = dbContext.Entry(postComment);
+                        entry.State = postComment.Id == 0 ? EntityState.Added :
+                            EntityState.Modified;
+                    }
                 }
             }
             dbContext.SaveChanges();

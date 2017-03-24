@@ -104,6 +104,7 @@
   <ItemGroup>
     <Compile Include="AdminControllerTests.cs" />
     <Compile Include="App_Start\NinjectWebCommon.cs" />
+    <Compile Include="CommentControllerTests.cs" />
     <Compile Include="PostControllerTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

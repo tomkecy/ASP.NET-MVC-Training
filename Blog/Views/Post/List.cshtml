@@ -1,14 +1,16 @@
 ﻿@model IEnumerable<Blog.Domain.Entities.Post>
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Blog";
 }
+<div>
+    @foreach (var post in Model)
+    {
 
-<h2>Index</h2>
-
-@foreach (var post in Model)
-{
-    <h2>@post.Title</h2>
-    <h4>@post.CreationDateTime</h4>
-    @post.Content
-    <br/><br />
-}
+        <div class="well" style="margin-top: 2%">
+            <h1>@post.Title</h1>
+            <h4>@post.CreationDateTime</h4>
+            <span style="text-justify: auto">@post.Content</span><br/>
+            @Html.ActionLink("Skomentuj", "Details","Post",  new { post.Id}, new {@class="btn btn-default"} )
+        </div>
+    }
+</div>

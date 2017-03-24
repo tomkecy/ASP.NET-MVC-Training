@@ -13,9 +13,10 @@ namespace Blog.Domain.Entities
         [Key]
         public int Id { get; set; }
         public string Title { get; set; }
+        public string Category { get; set; }
         public string Content { get; set; }
         public DateTime CreationDateTime { get; set; }
-        public IEnumerable<PostComment> Comments { get; set; }
+        public virtual ICollection<PostComment> PostComments { get; set; }
 
         /// <summary>
         /// Initializes new instance of Post model
@@ -23,7 +24,7 @@ namespace Blog.Domain.Entities
         public Post()
         {
             CreationDateTime = DateTime.Now;
-            Comments = new List<PostComment>();
+            PostComments = new List<PostComment>();
         }
 
     }//END of class Post

@@ -1,0 +1,24 @@
+﻿@model Blog.Models.CommentListViewModel
+
+<div class="well">
+    <h2>Komentarze:</h2>
+    @foreach (var comment in Model.PostComments)
+    {
+        <h5>@comment.CreationDateTime</h5>
+        <span style="text-justify: auto">@comment.Content</span>
+        <hr />
+    }
+    <h4>Dodaj komentarz:</h4>
+    @using(Html.BeginForm("AddComment", "Comment"))
+    {
+        <div class="well">
+            @Html.HiddenFor(m => m.NewComment.PostId)
+            @Html.HiddenFor(m => m.NewComment.CreationDateTime)
+            @Html.TextAreaFor(m => m.NewComment.Content)
+            <div class="form-group">
+                <input type="submit" value="Dodaj" class="btn btn-primary"/>
+                @Html.ActionLink("Powrót", "Index", "Admin", null, new {@class = "btn btn-warning"})
+            </div>
+        </div>
+    }
+</div>

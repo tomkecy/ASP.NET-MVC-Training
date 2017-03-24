@@ -36,7 +36,7 @@ namespace Blog.Controllers
         /// <returns>View with list of all posts</returns>
         public ViewResult Index()
         {
-            return View(postRepository.GetAll());
+            return View(postRepository.GetAll().ToList());
         }//END of Index method
 
         /// <summary>

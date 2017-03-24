@@ -1,0 +1,15 @@
+﻿
+@{
+    ViewBag.Title = "";
+}
+@model Blog.Domain.Entities.Post
+
+
+<div>
+    <div class="well">
+        <h1>@Model.Title</h1>
+        <h4>@Model.CreationDateTime</h4>
+        <span style="text-justify: auto">@Model.Content</span><br />
+    </div>
+    @Html.Action("List","Comment", new {Model.Id})
+</div>

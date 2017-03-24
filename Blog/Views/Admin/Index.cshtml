@@ -1,4 +1,4 @@
-﻿@model IEnumerable<Blog.Domain.Entities.Post>
+﻿@model ICollection<Blog.Domain.Entities.Post>
 
 @{
     ViewBag.Title = "Administracja";
@@ -23,7 +23,7 @@
                     <td>@post.Id</td>
                     <td>@post.Title</td>
                     <td>@post.CreationDateTime</td>
-                    <td>@post.Comments.Count()</td>
+                    <td>@post.PostComments.Count</td>
                     <td>
                         @Html.ActionLink("Edytuj", "Edit", new {post.Id}, new {@class = "btn btn-default"})
                         @using (Html.BeginForm("Delete", "Admin"))

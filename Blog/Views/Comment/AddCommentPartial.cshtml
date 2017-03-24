@@ -1,0 +1,13 @@
+﻿@model Blog.Domain.Entities.PostComment
+    
+<h4>Dodaj komentarz:</h4>
+@using (Html.BeginForm("AddComment", "Comment"))
+{
+    <div class="well">
+        @Html.HiddenFor(m => m.PostId)
+        @Html.TextAreaFor(m => m.Content)
+        <div class="form-group">
+            <input type="submit" value="Dodaj" class="btn btn-primary" />
+        </div>
+    </div>
+}

@@ -7,7 +7,6 @@ namespace Blog.Domain.Concrete
     {
         public ApplicationDbContext() : base("BlogContext")
         {
-            
         }
         public virtual DbSet<Post> Posts { get; set; }
         public virtual DbSet<PostComment> PostComments { get; set; }

@@ -1,0 +1,12 @@
+﻿@model Blog.Models.CommentListViewModel
+
+<div class="well">
+    <h2>Komentarze:</h2>
+    @foreach (var comment in Model.PostComments)
+    {
+        <h5>@comment.CreationDateTime</h5>
+        <span style="text-justify: auto">@comment.Content</span>
+        <hr />
+    }
+    @Html.Partial("AddCommentPartial", Model.NewComment)
+</div>

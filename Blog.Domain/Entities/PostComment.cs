@@ -10,6 +10,7 @@ namespace Blog.Domain.Entities
     {
         [Key]
         public int Id { get; set; }
+        public int PostId { get; set; }
         public String Content { get; set; }
         public DateTime CreationDateTime { get; set; }
 

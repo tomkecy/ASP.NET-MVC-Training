@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
@@ -13,13 +14,25 @@ namespace Blog
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
-            routes.MapRoute(null,
+            
+            routes.MapRoute(
+                null,
                 "",
                 new
                 {
                     controller = "Post",
                     action = "List",
                 });
+            routes.MapRoute(
+                null,
+                "strona/{page}",
+                new
+                {
+                    controller = "Post",
+                    action = "List",
+                    page = UrlParameter.Optional
+                }
+            );
 
             routes.MapRoute(
                 name: "Default",
