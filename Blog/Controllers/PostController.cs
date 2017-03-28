@@ -19,7 +19,7 @@ namespace Blog.Controllers
         #region PrivateFields
 
         private readonly IPostRepository _postRepository;
-        private int _postsPerPage = 5;
+        private const int DefaultPostsPerPage= 5;
 
         #endregion
 
@@ -28,17 +28,14 @@ namespace Blog.Controllers
         public PostController(IPostRepository postRepository)
         {
             this._postRepository = postRepository;
+            PostsPerPage = DefaultPostsPerPage;
         }
 
         #endregion
 
         #region Properites
 
-        public int PostsPerPage
-        {
-            get { return _postsPerPage; }
-            set { _postsPerPage = value; }
-        }//END of NumberOfPosts property
+        public int PostsPerPage { get; set; }
 
         #endregion
 
@@ -46,16 +43,20 @@ namespace Blog.Controllers
         /// HTTP GET method which returns view response containing posts list.
         /// </summary>
         /// <returns>View with posts list</returns>
-        public ViewResult List(int page=1)
+        public ViewResult List(string category = null, int page=1)
         {
             IEnumerable<Post> allPosts = _postRepository.GetAll().OrderByDescending(x => x.CreationDateTime);
+            if (category != null)
+            {
+                allPosts = allPosts.Where(p => p.Category == category);
+            }
             PostsListViewModel postsListViewModel = new PostsListViewModel()
             {
-                Posts = allPosts.Skip((page - 1) * _postsPerPage).Take(_postsPerPage).ToList(),
+                Posts = allPosts.Skip((page - 1) * PostsPerPage).Take(PostsPerPage).ToList(),
                 PagingInfo = new PagingInfo()
                 {
                     CurrentPage = page,
-                    PostsPerPage = _postsPerPage,
+                    PostsPerPage = PostsPerPage,
                     TotalPosts = allPosts.Count()
                 }
                 

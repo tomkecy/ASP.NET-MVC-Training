@@ -2,6 +2,7 @@
     
 <div class="form-group" style="margin-top: 2%">
     <label>Kategorie</label>
+    @Html.ActionLink("Wszystko", "List", "Post", null, new {@class="btn btn-block btn-default"})
     @foreach (var link in Model)
     {
         @Html.ActionLink(link, "List", "Post", new {category = link}, new {@class="btn btn-block btn-default"})

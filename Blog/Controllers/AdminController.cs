@@ -16,7 +16,7 @@ namespace Blog.Controllers
     {
         #region PrivateFields
 
-        private IPostRepository postRepository;
+        private IPostRepository _postRepository;
 
         #endregion
         #region Constructors
@@ -26,7 +26,7 @@ namespace Blog.Controllers
         /// <param name="postRepository">Post repository to be manipulated by controller</param>
         public AdminController(IPostRepository postRepository)
         {
-            this.postRepository = postRepository;
+            this._postRepository = postRepository;
         }
         #endregion
 
@@ -36,7 +36,7 @@ namespace Blog.Controllers
         /// <returns>View with list of all posts</returns>
         public ViewResult Index()
         {
-            return View(postRepository.GetAll().ToList());
+            return View(_postRepository.GetAll().ToList());
         }//END of Index method
 
         /// <summary>
@@ -55,7 +55,7 @@ namespace Blog.Controllers
         /// <returns>Edit ViewResult</returns>
         public ViewResult Edit(int id)
         {
-            Post post = postRepository.GetById(id);
+            Post post = _postRepository.GetById(id);
             return View(post);
         }//END of Edit method
 
@@ -69,7 +69,7 @@ namespace Blog.Controllers
         {
             if (ModelState.IsValid)
             {
-                postRepository.Update(post);
+                _postRepository.Update(post);
                 TempData["message"] = string.Format("Zapisano {0} ", post.Title);
                 return RedirectToAction("Index");
             }
@@ -85,7 +85,7 @@ namespace Blog.Controllers
         [HttpPost]
         public ActionResult Delete(int id)
         {
-            Post post = postRepository.Delete(id);
+            Post post = _postRepository.Delete(id);
             if (post != null)
             {
                 TempData["message"] = string.Format("Usunięto {0} ", post.Title);

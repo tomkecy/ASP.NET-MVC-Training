@@ -34,11 +34,16 @@ namespace Blog.Controllers
         [HttpPost]
         public RedirectToRouteResult AddComment(PostComment postComment)
         {
-                postComment.CreationDateTime = DateTime.Now;
-                Post post = postRepository.GetById(postComment.PostId);
-                post.PostComments.Add(postComment);
-                postRepository.Update(post);
-                TempData["message"] = "Dodano komentarz";
+            if (!ModelState.IsValid)
+            {
+                TempData["message"] = "Niepoprawny komentarz";
+                return RedirectToAction("Details", "Post", new {postComment.PostId});
+            }
+
+            Post post = postRepository.GetById(postComment.PostId);
+            post.PostComments.Add(postComment);
+            postRepository.Update(post);
+            TempData["message"] = "Dodano komentarz";
 
             return RedirectToAction("Details", "Post", new {post.Id});
         }//END of AddComment method

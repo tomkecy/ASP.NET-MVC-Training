@@ -76,7 +76,7 @@ namespace Blog.Domain.Concrete
         /// Gets post from repository
         /// </summary>
         /// <param name="id">Post id</param>
-        /// <returns>Returns post with passed id</returns>
+        /// <returns>Returns post with passed id or null if post with given id don't exist in repository</returns>
         public Post GetById(int id)
         {
             return dbContext.Posts.Include(m => m.PostComments).SingleOrDefault(post => post.Id == id);
