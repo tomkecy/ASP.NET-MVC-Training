@@ -106,11 +106,11 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AdminControllerTests.cs" />
+    <Compile Include="ControllersTests\AdminControllerTests.cs" />
     <Compile Include="App_Start\NinjectWebCommon.cs" />
-    <Compile Include="CommentControllerTests.cs" />
-    <Compile Include="NavControllerTests.cs" />
-    <Compile Include="PostControllerTests.cs" />
+    <Compile Include="ControllersTests\CommentControllerTests.cs" />
+    <Compile Include="ControllersTests\NavControllerTests.cs" />
+    <Compile Include="ControllersTests\PostControllerTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

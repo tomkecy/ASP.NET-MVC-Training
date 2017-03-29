@@ -1,0 +1,100 @@
+[33mcommit ef777115c632de30717e21ec6a9462e617bac603[m
+Author: Tomasz Cybulski <tomcyb27@gmail.com>
+Date:   Tue Mar 28 13:57:09 2017 +0200
+
+    Done tests and comments refactoring
+    Added tests in NUnit
+    Added comments in PostRepository Interface
+
+[33mcommit 3b96979235ad79e0f5e4605b8f1d786cdf1d7a55 ef777115c632de30717e21ec6a9462e617bac603[m
+Author: Tomasz Cybulski <tomcyb27@gmail.com>
+Date:   Fri Mar 24 23:29:59 2017 +0100
+
+    Changed main page look
+
+[33mcommit 25b0bccae0768e697c9075aaadea15df584bb1ab 3b96979235ad79e0f5e4605b8f1d786cdf1d7a55[m
+Author: Tomasz Cybulski <tomcyb27@gmail.com>
+Date:   Fri Mar 24 22:27:57 2017 +0100
+
+    Fixed repository bug
+    Added some minor changes to models and corresponding view models.
+    Added routing maping
+    Added comment partials
+
+[33mcommit 5d3b8ef6eddf4a64f6efbec9dc0fa469f52577ea 25b0bccae0768e697c9075aaadea15df584bb1ab[m
+Author: Tomasz Cybulski <tomcyb27@gmail.com>
+Date:   Sun Mar 5 15:19:43 2017 +0100
+
+    Added admin views
+
+[33mcommit 0237235e7ca016d7b2d6f6a2ea92231255950a70 5d3b8ef6eddf4a64f6efbec9dc0fa469f52577ea[m
+Author: Tomasz Cybulski <tomcyb27@gmail.com>
+Date:   Fri Mar 3 10:46:16 2017 +0100
+
+    Added comments
+
+[33mcommit e90865221dce73d69b57bd3256780e27614abcfc 0237235e7ca016d7b2d6f6a2ea92231255950a70[m
+Author: Tomasz Cybulski <tomcyb27@gmail.com>
+Date:   Thu Mar 2 17:20:44 2017 +0100
+
+    Added custom route
+
+[33mcommit d4902d66f00cc572e4337b32dc6d45e4eb9d39c8 e90865221dce73d69b57bd3256780e27614abcfc[m
+Author: Tomasz Cybulski <tomcyb27@gmail.com>
+Date:   Thu Mar 2 17:10:40 2017 +0100
+
+    Added create method and basic view
+
+[33mcommit 980f64fa90802ec381d4288fa8b896e2452d395c d4902d66f00cc572e4337b32dc6d45e4eb9d39c8[m
+Author: Tomasz Cybulski <tomcyb27@gmail.com>
+Date:   Thu Mar 2 16:35:46 2017 +0100
+
+    Merged all work
+
+[33mcommit 5d823b0bf3584fdfafb5c0d43abb47e1b56d9a4e 980f64fa90802ec381d4288fa8b896e2452d395c[m
+Author: Tomasz Cybulski <tomcyb27@gmail.com>
+Date:   Thu Mar 2 16:31:09 2017 +0100
+
+    Fixed PostRepository methods return types
+
+[33mcommit c9b358d53206a2450f02d61e677afd51fa447111 5d823b0bf3584fdfafb5c0d43abb47e1b56d9a4e[m
+Merge: 6f861e4 6a72757
+Author: Tomasz Cybulski <tomcyb27@gmail.com>
+Date:   Thu Mar 2 16:17:47 2017 +0100
+
+    Merge branch 'AdminController'
+
+[33mcommit 6f861e438acc4096038b72d7cb5b01a8ecae84c8 c9b358d53206a2450f02d61e677afd51fa447111[m
+Author: Tomasz Cybulski <tomcyb27@gmail.com>
+Date:   Thu Mar 2 16:11:11 2017 +0100
+
+    Changed return types in Repository interface
+
+[33mcommit 6a7275735266ced5106c18f6237e6341370586d8 c9b358d53206a2450f02d61e677afd51fa447111[m
+Author: Tomasz Cybulski <tomcyb27@gmail.com>
+Date:   Thu Mar 2 16:07:16 2017 +0100
+
+    Added edit methods and tests
+
+[33mcommit 6ffc274ad5077aea76c48a1f7c91fb208dc26b2d 6a7275735266ced5106c18f6237e6341370586d8[m
+Author: Tomasz Cybulski <tomcyb27@gmail.com>
+Date:   Thu Mar 2 14:35:26 2017 +0100
+
+    Configured post controller
+    Added dependency resolver, database linked with post controller,
+    basic test
+
+[33mcommit e3f8c7f8fc07a42f8f4e856e16f49e2dd28c9643 6ffc274ad5077aea76c48a1f7c91fb208dc26b2d 6f861e438acc4096038b72d7cb5b01a8ecae84c8[m
+Author: Tomasz Cybulski <tomcyb27@gmail.com>
+Date:   Thu Mar 2 13:10:56 2017 +0100
+
+    Added PostRepository
+    Added PostRepository implementation, also made some minor changes in
+    solution organisation
+
+[33mcommit 05cdc82e280ba940b1c0e1d3aad540989363d6bf e3f8c7f8fc07a42f8f4e856e16f49e2dd28c9643[m
+Author: Tomasz Cybulski <tomcyb27@gmail.com>
+Date:   Thu Mar 2 11:15:05 2017 +0100
+
+    Initial Commit
+    Commit include initial configuration
